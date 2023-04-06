@@ -2,29 +2,25 @@ import java.awt.*;
 import javax.swing.*;
 public class CalculatorTwoGUI {
     private JFrame fr;
-    private JPanel p;
     private JTextField tf;
-    private JButton b7, b8, b9, plus, b4, b5, b6, del, b1, b2, b3, mul, b0, cle, eq, div;
-    private JButton[] b = {b7, b8, b9, plus, b4, b5, b6, del, b1, b2, b3, mul, b0, cle, eq, div};
-    private String[] s = {"7", "8", "9", "+", "4", "5", "6", "-", "1", "2", "3", "x", "0", "c", "=", "/"};
-    public CalculatorTwoGUI () {
-        fr = new JFrame();
+    private JPanel p;
+    private JButton b7, b8, b9, bpl, b4, b5, b6, bmi, b1, b2, b3, bmu, b0, bc, be, bdi;
+    private JButton[] b = {b7, b8, b9, bpl, b4, b5, b6, bmi, b1, b2, b3, bmu, b0, bc, be, bdi};
+    private String[] tb = {"7", "8", "9", "+", "4", "5", "6", "-", "1", "2", "3", "x", "0", "c", "=", "/"};
+    public CalculatorTwoGUI() {
+        fr = new JFrame("My Calculator");
+        tf = new JTextField();
         p = new JPanel();
-        tf = new JTextField(32);
-        b = new JButton[16];
-        for (int i=0; i<b.length; i++) {
-            b[i] = new JButton(s[i]);
-        }
+        fr.setLayout(new BorderLayout());
         p.setLayout(new GridLayout(4,4));
         for (int i=0; i<b.length; i++) {
+            b[i]  = new JButton(tb[i]);
             p.add(b[i]);
         }
-        fr.setLayout(new BorderLayout());
         fr.add(tf, BorderLayout.NORTH);
         fr.add(p);
-        fr.setSize(200,200);
-        fr.setResizable(false);
         fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        fr.setSize(300,300);
         fr.setVisible(true);
     }
 }

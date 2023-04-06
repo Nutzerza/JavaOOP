@@ -2,33 +2,29 @@ import java.awt.*;
 import javax.swing.*;
 public class CalculatorOneGUI {
     private JFrame fr;
-    private JTextField tf1, tf2, tf3;
     private JPanel p;
     private JButton b1, b2, b3, b4;
+    private JTextField tf1, tf2, tf3;
+    private JButton[] b = {b1, b2, b3, b4};
+    private String[] bs = {"Plus", "Minus", "Multiply", "Divide"};
     public CalculatorOneGUI() {
-        fr = new JFrame("CalculatorOne");
-        tf1 = new JTextField(32);
-        tf2 = new JTextField(32);
-        tf3 = new JTextField(32);
-        tf3.setEditable(false);
+        fr = new JFrame("Calculator");
         p = new JPanel();
-        b1 = new JButton("+");
-        b2 = new JButton("-");
-        b3 = new JButton("*");
-        b4 = new JButton("/");
+        fr.setLayout(new GridLayout(4, 1));
         p.setLayout(new FlowLayout());
-        p.add(b1);
-        p.add(b2);
-        p.add(b3);
-        p.add(b4);
+        tf1 = new JTextField();
+        tf2 = new JTextField();
+        tf3 = new JTextField();
+        for (int i=0; i<b.length; i++) {
+            b[i] = new JButton(bs[i]);
+            p.add(b[i]);
+        }
         fr.add(tf1);
         fr.add(tf2);
         fr.add(p);
         fr.add(tf3);
-        fr.setSize(275,180);
-        fr.setResizable(false);
-        fr.setLayout(new GridLayout(4,1));
         fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        fr.pack();
         fr.setVisible(true);
     }
 }
