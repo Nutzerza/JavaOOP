@@ -7,8 +7,9 @@ public class TellerGUI implements ActionListener {
     private JTextField tf1, tf2;
     private JButton b1, b2, b3;
     private JLabel l1, l2;
+    private Account ac;
     public TellerGUI() {
-        Account ac = new Account(6000, "");
+        ac = new Account(6000, "");
         fr = new JFrame("Teller GUI");
         p1 = new JPanel();
         p2 = new JPanel();
@@ -16,8 +17,8 @@ public class TellerGUI implements ActionListener {
         p4 = new JPanel();
         l1 = new JLabel("Balance");
         l2 = new JLabel("Amount");
-        tf1 = new JTextField(ac.getBalance()+"", 64);
-        tf2 = new JTextField(64);
+        tf1 = new JTextField(ac.getBalance()+"");
+        tf2 = new JTextField();
         b1 = new JButton("Deposit");
         b2 = new JButton("Withdraw");
         b3 = new JButton("Exit");
@@ -50,13 +51,15 @@ public class TellerGUI implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource().equals(b1)) {
-            
+            ac.deposit(Integer.parseInt(tf2.getText()));
+            tf1.setText(ac.getBalance()+"");
         }
         else if (ae.getSource().equals(b2)) {
-            
+            ac.withdraw(Integer.parseInt(tf2.getText()));
+            tf1.setText(ac.getBalance()+"");
         }
         else if (ae.getSource().equals(b3)) {
-            
+            System.exit(0);
         }
     }
     public static void main(String[] args) {
