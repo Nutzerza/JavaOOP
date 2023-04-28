@@ -72,11 +72,9 @@ public class ChatDemo implements ActionListener, WindowListener {
         try (FileWriter fw = new FileWriter("ChatDemo.dat"); ) {
             for (int i = 0; i<ta.getText().length(); i++) {
                 fw.write(ta.getText().charAt(i));
-            System.out.println("kuy");
             }
         } catch (IOException e) {
             System.out.println(e);
-            System.out.println("Fuck u");
         }
     }
     @Override
