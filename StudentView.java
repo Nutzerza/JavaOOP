@@ -21,10 +21,14 @@ public class StudentView implements ActionListener, WindowListener {
         tfID = new JTextField();
         tfName = new JTextField();
         tfMoney = new JTextField("0");
+        st = new Student();
         
         p1.setLayout(new GridLayout(3,2));
         pButton.setLayout(new FlowLayout());
         tfMoney.setEditable(false);
+        deposit.addActionListener(this);
+        withdraw.addActionListener(this);
+        fr.addWindowListener(this);
         
         p1.add(l1);
         p1.add(tfID);
@@ -46,14 +50,12 @@ public class StudentView implements ActionListener, WindowListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource().equals(withdraw)) {
-            st.setID(Integer.parseInt(tfID.getText()));
-            st.setName(tfName.getText());
-            st.setMoney(st.getMoney()-100);
+            if (st.getMoney()>0) {
+                st.setMoney(st.getMoney()-100);
             tfMoney.setText(""+st.getMoney());
+            }
         }
         else if (ae.getSource().equals(deposit)) {
-            tfID.getText();
-            tfName.getText();
             st.setMoney(st.getMoney()+100);
             tfMoney.setText(""+st.getMoney());
         }
@@ -62,22 +64,24 @@ public class StudentView implements ActionListener, WindowListener {
     @Override
     public void windowOpened(WindowEvent e) {
         try (FileInputStream fin = new FileInputStream("StudentM.dat");
-            ObjectInputStream in = new ObjectInputStream(fin)) {
-            st = (Student) in.readObject();
+            ObjectInputStream oin = new ObjectInputStream(fin)) {
+            st = (Student) oin.readObject();
             tfID.setText(""+st.getID());
             tfName.setText(st.getName());
             tfMoney.setText(""+st.getMoney());
         } catch (IOException ex) {
-            ex.printStackTrace();
+//            ex.printStackTrace();
         } catch (ClassNotFoundException c) {
-            c.printStackTrace();
+//            c.printStackTrace();
         }
     }
     @Override
     public void windowClosing(WindowEvent e) {
         try (FileOutputStream fout = new FileOutputStream("StudentM.dat"); 
-            ObjectOutputStream out = new ObjectOutputStream(fout); ) {
-            out.writeObject(st);
+            ObjectOutputStream oout = new ObjectOutputStream(fout); ) {
+            st.setID(Integer.parseInt(tfID.getText()));
+            st.setName(tfName.getText());
+            oout.writeObject(st);
         } catch(IOException ex) {
             ex.printStackTrace();
         }

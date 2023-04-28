@@ -64,7 +64,7 @@ public class ChatDemo implements ActionListener, WindowListener {
             }
             ta.setText(str);
         } catch (IOException ex) {
-            ex.printStackTrace();
+//            ex.printStackTrace();
         }
     }
     @Override
