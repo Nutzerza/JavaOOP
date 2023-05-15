@@ -2,8 +2,10 @@ import java.awt.Color;
 import java.awt.event.*;
 public class AdminController implements MouseListener, ActionListener {
     private AdminView av;
+    private CheckStockView csv;
     public AdminController(AdminView av) {
         this.av = av;
+        csv = new CheckStockView();
         init();
     }
     public void init() {
@@ -11,10 +13,10 @@ public class AdminController implements MouseListener, ActionListener {
         av.getmiLogout().addActionListener(this);
         av.getlMain().addMouseListener(this);
         av.getlCheckStock().addMouseListener(this);
-        av.getlAddStock().addMouseListener(this);
         av.getlCashier().addMouseListener(this);
         av.getlPromotion().addMouseListener(this);
         av.getlLogo().addMouseListener(this);
+        av.getfr().add(csv.getDP());
     }
 
     @Override
@@ -24,18 +26,20 @@ public class AdminController implements MouseListener, ActionListener {
         }
         else if (e.getSource().equals(av.getlMain())) {
             av.setMainPage();
+            csv.getDP().setVisible(false);
         }
         else if (e.getSource().equals(av.getlCheckStock())) {
             av.setCheckStockPage();
-        }
-        else if (e.getSource().equals(av.getlAddStock())) {
-            av.setAddStockPage();
+            csv.setStandard(false, true, false);
+            csv.getDP().setVisible(true);
         }
         else if (e.getSource().equals(av.getlCashier())) {
             av.setCashierPage();
+            csv.getDP().setVisible(false);
         }
         else if (e.getSource().equals(av.getlPromotion())) {
             av.setPromotionPage();
+            csv.getDP().setVisible(false);
         }
         else if (e.getSource().equals(av.getlLogo())) {
             av.setMainPage();
@@ -56,9 +60,6 @@ public class AdminController implements MouseListener, ActionListener {
         else if (e.getSource().equals(av.getlCheckStock())) {
             av.setlCheckStock(Color.GRAY);
         }
-        else if (e.getSource().equals(av.getlAddStock())) {
-            av.setlAddStock(Color.GRAY);
-        }
         else if (e.getSource().equals(av.getlCashier())) {
             av.setlCashier(Color.GRAY);
         }
@@ -76,9 +77,6 @@ public class AdminController implements MouseListener, ActionListener {
         }
         else if (e.getSource().equals(av.getlCheckStock())) {
             av.setlCheckStock(Color.WHITE);
-        }
-        else if (e.getSource().equals(av.getlAddStock())) {
-            av.setlAddStock(Color.WHITE);
         }
         else if (e.getSource().equals(av.getlCashier())) {
             av.setlCashier(Color.WHITE);

@@ -6,14 +6,13 @@ public class AdminView {
     private JPopupMenu popup;
     private JPanel pUp, pLeft, pUpLeft;
     private JMenuItem miLogout;
-    private JLabel lMain, lCheckStock, lAddStock, lCashier, lPromotion, lLogo, lPic;
+    private JLabel lMain, lCheckStock, lCashier, lPromotion, lLogo, lPic;
     public AdminView() {
         fr = new JFrame();
         pUp = new JPanel();
         pLeft = new JPanel();
         lMain = new JLabel(" Main");
         lCheckStock = new JLabel(" CheckStock");
-        lAddStock = new JLabel(" AddStock");
         lCashier = new JLabel(" Cashier");
         lPromotion = new JLabel(" Promotion");
         popup = new JPopupMenu();
@@ -43,7 +42,6 @@ public class AdminView {
         Color lc = Color.WHITE;
         lMain.setFont(font);
         lCheckStock.setFont(font);
-        lAddStock.setFont(font);
         lCashier.setFont(font);
         lPromotion.setFont(font);
         
@@ -54,17 +52,14 @@ public class AdminView {
         
         lMain.setBounds(10, 200, 220, 50);
         lCheckStock.setBounds(10, 260, 180, 50);
-        lAddStock.setBounds(10, 320, 180, 50);
-        lCashier.setBounds(10, 380, 180, 50);
-        lPromotion.setBounds(10, 440, 180, 50);
+        lCashier.setBounds(10, 320, 180, 50);
+        lPromotion.setBounds(10, 380, 180, 50);
         lMain.setBackground(lc);
         lCheckStock.setBackground(lc);
-        lAddStock.setBackground(lc);
         lCashier.setBackground(lc);
         lPromotion.setBackground(lc);
         lMain.setOpaque(true);
         lCheckStock.setOpaque(true);
-        lAddStock.setOpaque(true);
         lCashier.setOpaque(true);
         lPromotion.setOpaque(true);
         lMain.setEnabled(false);
@@ -90,7 +85,6 @@ public class AdminView {
         pLeft.setLayout(null);
         pLeft.add(lMain);
         pLeft.add(lCheckStock);
-        pLeft.add(lAddStock);
         pLeft.add(lCashier);
         pLeft.add(lPromotion);
         
@@ -120,9 +114,6 @@ public class AdminView {
     public JLabel getlCheckStock() {
         return this.lCheckStock;
     }
-    public JLabel getlAddStock() {
-        return this.lAddStock;
-    }
     public JLabel getlCashier() {
         return this.lCashier;
     }
@@ -147,9 +138,6 @@ public class AdminView {
     public void setlCheckStock(Color c) {
         lCheckStock.setBackground(c);
     }
-    public void setlAddStock(Color c) {
-        lAddStock.setBackground(c);
-    }
     public void setlCashier(Color c) {
         lCashier.setBackground(c);
     }
@@ -159,61 +147,44 @@ public class AdminView {
     public void setMainPage() {
         lMain.setBounds(10, 200, 220, 50);
         lCheckStock.setBounds(10, 260, 180, 50);
-        lAddStock.setBounds(10, 320, 180, 50);
-        lCashier.setBounds(10, 380, 180, 50);
-        lPromotion.setBounds(10, 440, 180, 50);
+        lCashier.setBounds(10, 320, 180, 50);
+        lPromotion.setBounds(10, 380, 180, 50);
         lMain.setEnabled(false);
         lCheckStock.setEnabled(true);
-        lAddStock.setEnabled(true);
         lCashier.setEnabled(true);
         lPromotion.setEnabled(true);
     }
     public void setCheckStockPage() {
         lMain.setBounds(10, 200, 180, 50);
         lCheckStock.setBounds(10, 260, 220, 50);
-        lAddStock.setBounds(10, 320, 180, 50);
-        lCashier.setBounds(10, 380, 180, 50);
-        lPromotion.setBounds(10, 440, 180, 50);
+        lCashier.setBounds(10, 320, 180, 50);
+        lPromotion.setBounds(10, 380, 180, 50);
         lMain.setEnabled(true);
         lCheckStock.setEnabled(false);
-        lAddStock.setEnabled(true);
-        lCashier.setEnabled(true);
-        lPromotion.setEnabled(true);
-    }
-    public void setAddStockPage() {
-        lMain.setBounds(10, 200, 180, 50);
-        lCheckStock.setBounds(10, 260, 180, 50);
-        lAddStock.setBounds(10, 320, 220, 50);
-        lCashier.setBounds(10, 380, 180, 50);
-        lPromotion.setBounds(10, 440, 180, 50);
-        lMain.setEnabled(true);
-        lCheckStock.setEnabled(true);
-        lAddStock.setEnabled(false);
         lCashier.setEnabled(true);
         lPromotion.setEnabled(true);
     }
     public void setCashierPage() {
         lMain.setBounds(10, 200, 180, 50);
         lCheckStock.setBounds(10, 260, 180, 50);
-        lAddStock.setBounds(10, 320, 180, 50);
-        lCashier.setBounds(10, 380, 220, 50);
-        lPromotion.setBounds(10, 440, 180, 50);
+        lCashier.setBounds(10, 320, 220, 50);
+        lPromotion.setBounds(10, 380, 180, 50);
         lMain.setEnabled(true);
         lCheckStock.setEnabled(true);
-        lAddStock.setEnabled(true);
         lCashier.setEnabled(false);
         lPromotion.setEnabled(true);
     }
     public void setPromotionPage() {
         lMain.setBounds(10, 200, 180, 50);
         lCheckStock.setBounds(10, 260, 180, 50);
-        lAddStock.setBounds(10, 320, 180, 50);
-        lCashier.setBounds(10, 380, 180, 50);
-        lPromotion.setBounds(10, 440, 220, 50);
+        lCashier.setBounds(10, 320, 180, 50);
+        lPromotion.setBounds(10, 380, 220, 50);
         lMain.setEnabled(true);
         lCheckStock.setEnabled(true);
-        lAddStock.setEnabled(true);
         lCashier.setEnabled(true);
         lPromotion.setEnabled(false);
+    }
+    public static void main(String[] args) {
+        new AdminView();
     }
 }
