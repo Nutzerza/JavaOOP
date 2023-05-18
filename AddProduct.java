@@ -11,9 +11,9 @@ public class AddProduct {
     public AddProduct(){
         pfr = new JPanel();
         p1 = new JPanel();
-        lbName = new JLabel("Name");
-        lbCost = new JLabel("Cost");
-        lbPrice = new JLabel("Price");
+        lbName = new JLabel("Name:");
+        lbCost = new JLabel("Cost:");
+        lbPrice = new JLabel("Price:");
         tfName = new JTextField();
         tfCost = new JTextField();
         tfPrice = new JTextField();
@@ -22,7 +22,7 @@ public class AddProduct {
         btCancel = new JButton("Cancel");
         SpinnerModel num = new SpinnerNumberModel(0, 0, 1000, 1);
         value = new JSpinner(num);
-        lbValue = new JLabel("Value: ");
+        lbValue = new JLabel("Amount: ");
         
         lPic = new JLabel();
         lPic.setOpaque(true);
@@ -42,8 +42,6 @@ public class AddProduct {
         tfPrice.setFont(f);
         lbValue.setFont(f);
         value.setFont(f);
-        
-        
         
         JSpinner.NumberEditor editor = (JSpinner.NumberEditor) value.getEditor();
         JFormattedTextField textField = editor.getTextField();
@@ -81,6 +79,41 @@ public class AddProduct {
 
         pfr.setLayout(new BorderLayout());
         pfr.add(p1, BorderLayout.CENTER);
+        
+    }
+    public JTextField gettfName() {
+        return this.tfName;
+    }
+    public JTextField gettfCost() {
+        return this.tfCost;
+    }
+    public JTextField gettfPrice() {
+        return this.tfPrice;
+    }
+    public JButton getbtPic() {
+        return this.btPic;
+    }
+    public JButton getbtSave() {
+        return this.btSave;
+    }
+    public JButton getbtCancel() {
+        return this.btCancel;
+    }
+    public JLabel getLPic() {
+        return this.lPic;
+    }
+    public void setLPic(ImageIcon icon) {
+        lPic.setIcon(icon);
+    }
+    public int getAmount() {
+        return (int)this.value.getValue();
+    }
+    public void setForCancel() {
+        this.tfName.setText("");
+        this.tfCost.setText("");
+        this.tfPrice.setText("");
+        this.value.setValue(0);
+        this.lPic.setIcon(null);
     }
     public JPanel getpfr() {
         return this.pfr;

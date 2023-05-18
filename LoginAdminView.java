@@ -111,7 +111,7 @@ public class LoginAdminView {
         this.tfUserName.setText("");
         this.pfPassword.setText("");
     }
-    public static void main(String[] args) {
-        new LoginAdminView();
-    }
+//    public static void main(String[] args) {
+//        new LoginAdminView();
+//    }
 }

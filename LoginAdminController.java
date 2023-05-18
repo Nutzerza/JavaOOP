@@ -8,7 +8,6 @@ public class LoginAdminController implements ActionListener, MouseListener {
         init();
     }
     public void init() {
-//        lav.getlExit().addMouseListener(this);
         lav.getbLogin().addActionListener(this);
         lav.getpExit().addMouseListener(this);
     }

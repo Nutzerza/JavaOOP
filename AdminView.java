@@ -99,9 +99,6 @@ public class AdminView {
         fr.setVisible(true);
         new AdminController(this);
     }
-//    public static void main(String[] args) {
-//        new AdminView();
-//    }
     public JLabel getlLogo() {
         return this.lLogo;
     }
@@ -184,7 +181,7 @@ public class AdminView {
         lCashier.setEnabled(true);
         lPromotion.setEnabled(false);
     }
-    public static void main(String[] args) {
-        new AdminView();
-    }
+//    public static void main(String[] args) {
+//        new AdminView();
+//    }
 }

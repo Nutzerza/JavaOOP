@@ -3,7 +3,7 @@ import javax.swing.*;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 public class CheckStockView {
     private JPanel p;
-    private JLabel lOld, lNew;
+    private JLabel lOld, lNew, lSubmit, lCancle;
     private JDesktopPane dp;
     private JInternalFrame ifTable, ifNewP;
     public CheckStockView() {
@@ -11,8 +11,10 @@ public class CheckStockView {
         ifTable = new JInternalFrame("Increase Amount", false, false, false, false);
         ifNewP = new JInternalFrame("Add New Product", false, false, false, false);
         
-        lOld = new JLabel(" Increase Amount");
+        lOld = new JLabel("           Edit");
         lNew = new JLabel(" Add New Product");
+        lSubmit = new JLabel("           Save");
+        lCancle = new JLabel("         Cancle");
         
         Font font = new Font("Arial", Font.PLAIN, 24);
         lOld.setBounds(600, 10, 200, 50);
@@ -24,6 +26,18 @@ public class CheckStockView {
         lNew.setFont(font);
         lNew.setBackground(Color.WHITE);
         lNew.setOpaque(true);
+        
+        lSubmit.setBounds(600, 10, 200, 50);
+        lSubmit.setFont(font);
+        lSubmit.setForeground(Color.GREEN);
+        lSubmit.setBackground(Color.WHITE);
+        lSubmit.setOpaque(true);
+        
+        lCancle.setBounds(810, 10, 200, 50);
+        lCancle.setFont(font);
+        lCancle.setForeground(Color.RED);
+        lCancle.setBackground(Color.WHITE);
+        lCancle.setOpaque(true);
         
         BasicInternalFrameUI ui = (BasicInternalFrameUI) ifTable.getUI();
         ui.setNorthPane(null);
@@ -40,16 +54,19 @@ public class CheckStockView {
         ifTable.setBackground(Color.WHITE);
         ifNewP.setBackground(Color.red);
         
+        dp.add(lSubmit);
+        dp.add(lCancle);
         dp.add(lOld);
         dp.add(lNew);
         dp.add(ifTable);
         dp.add(ifNewP);
+        lSubmit.setVisible(false);
+        lCancle.setVisible(false);
         
         dp.setLayout(null);
         dp.setBackground(new Color(206,224,230));
         dp.setBounds(220, 60, 1030, 690);
         dp.setVisible(false);
-        new CheckStockController(this);
     }
     public void setNewBofNewp(boolean b) {
         if (b) {
@@ -57,8 +74,27 @@ public class CheckStockView {
             lNew.setBounds(810, 10, 200, 60);
         }
         else {
+            lNew.setEnabled(true);
             lNew.setBounds(810, 10, 200, 50);
         }
+    }
+    public void showlSubAlCan() {
+        lSubmit.setVisible(true);
+        lCancle.setVisible(true);
+        lOld.setVisible(false);
+        lNew.setVisible(false);
+    }
+    public void unshowlSubAlCan() {
+        lSubmit.setVisible(false);
+        lCancle.setVisible(false);
+        lOld.setVisible(true);
+        lNew.setVisible(true);
+    }
+    public JLabel getlSub() {
+        return this.lSubmit;
+    }
+    public JLabel getlCan() {
+        return this.lCancle;
     }
     public JDesktopPane getDP() {
         return this.dp;
@@ -79,14 +115,28 @@ public class CheckStockView {
         this.ifTable.setVisible(bTable);
         this.ifNewP.setVisible(bNew);
     }
+    public void setLSubColor(Color c) {
+        lSubmit.setBackground(c);
+    }
+    public void setLCanColor(Color c) {
+        lCancle.setBackground(c);
+    }
     public void setLNewColor(Color c) {
         lNew.setBackground(c);
     }
     public void setLOldColor(Color c) {
         lOld.setBackground(c);
     }
+    public void removeDTifTable(JPanel p) {
+        ifTable.remove(p);
+    }
+    public void addDTifTable(JPanel p) {
+        ifTable.add(p);
+    }
     public void setStandard(boolean bof, boolean bT, boolean bN) {
         setNewBofNewp(bof);
         setIPVisible(bT, bN);
+    }
+    public void setNewTable() {
     }
 }
